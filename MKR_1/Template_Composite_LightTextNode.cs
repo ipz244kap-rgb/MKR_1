@@ -12,6 +12,11 @@ namespace StructuralPatternsLab
         public override string OuterHTML => Render();
         public override string InnerHTML => _text;
 
+        public override void Accept(Visitor_IVisitor visitor)
+        {
+            visitor.VisitText(this);
+        }
+
         protected override string GetOpeningTag() => "";
         protected override string GetContent() => _text;
         protected override string GetClosingTag() => "";

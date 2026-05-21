@@ -79,6 +79,15 @@ namespace StructuralPatternsLab
             li1.SetState(new State_VisibleState());
             Console.WriteLine("Поточний стан: Visible");
             Console.WriteLine($"Результат рендерингу li1: {li1.OuterHTML}");
+
+            Console.WriteLine("\n--- Тестування Visitor ---");
+            Visitor_NodeReporter reporter = new Visitor_NodeReporter();
+            var visitIterator = ul.GetIterator();
+            while (visitIterator.HasNext())
+            {
+                var node = visitIterator.Next();
+                node?.Accept(reporter);
+            }
         }
     }
 }
