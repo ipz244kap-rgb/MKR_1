@@ -51,6 +51,22 @@ namespace StructuralPatternsLab
                     Console.WriteLine($"Текст: {text.InnerHTML}");
                 }
             }
+
+            Console.WriteLine("\n--- Тестування Command ---");
+            Command_Invoker invoker = new Command_Invoker();
+            
+            Composite_LightElementNode li3 = new Composite_LightElementNode("li", DisplayType.Block, ClosingType.Paired,
+                new List<string> { "list-group-item" });
+            li3.Add(new Composite_LightTextNode("Третій елемент (доданий через Command)"));
+
+            Command_AddNode addCommand = new Command_AddNode(ul, li3);
+            
+            Console.WriteLine($"Кількість елементів перед виконанням команди: {ul.ChildrenCount}");
+            invoker.ExecuteCommand(addCommand);
+            Console.WriteLine($"Кількість елементів після виконання команди: {ul.ChildrenCount}");
+            
+            invoker.Undo();
+            Console.WriteLine($"Кількість елементів після Undo: {ul.ChildrenCount}");
         }
     }
 }
