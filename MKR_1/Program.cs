@@ -67,6 +67,18 @@ namespace StructuralPatternsLab
             
             invoker.Undo();
             Console.WriteLine($"Кількість елементів після Undo: {ul.ChildrenCount}");
+
+            Console.WriteLine("\n--- Тестування State ---");
+            Console.WriteLine("Поточний стан: Visible");
+            Console.WriteLine($"Результат рендерингу li1: {li1.OuterHTML}");
+
+            li1.SetState(new State_HiddenState());
+            Console.WriteLine("Поточний стан: Hidden");
+            Console.WriteLine($"Результат рендерингу li1: {li1.OuterHTML} (порожньо)");
+
+            li1.SetState(new State_VisibleState());
+            Console.WriteLine("Поточний стан: Visible");
+            Console.WriteLine($"Результат рендерингу li1: {li1.OuterHTML}");
         }
     }
 }

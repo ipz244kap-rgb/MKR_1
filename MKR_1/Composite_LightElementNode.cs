@@ -5,20 +5,27 @@ namespace StructuralPatternsLab
 {
     public class Composite_LightElementNode : Composite_LightNode
     {
-        private string _tagName;
-        private DisplayType _displayType;
-        private ClosingType _closingType;
-        private List<string> _cssClasses;
+        public string TagName { get; }
+        public DisplayType Display { get; }
+        public ClosingType Closing { get; }
+        public List<string> CssClasses { get; }
         private List<Composite_LightNode> _children;
+        private State_INodeState _state;
 
         public Composite_LightElementNode(string tagName, DisplayType displayType, ClosingType closingType,
             List<string> cssClasses)
         {
-            _tagName = tagName;
-            _displayType = displayType;
-            _closingType = closingType;
-            _cssClasses = cssClasses ?? new List<string>();
+            TagName = tagName;
+            Display = displayType;
+            Closing = closingType;
+            CssClasses = cssClasses ?? new List<string>();
             _children = new List<Composite_LightNode>();
+            _state = new State_VisibleState();
+        }
+
+        public void SetState(State_INodeState state)
+        {
+            _state = state;
         }
 
         public List<Composite_LightNode> GetChildren()
@@ -51,32 +58,6 @@ namespace StructuralPatternsLab
             }
         }
 
-        public override string OuterHTML
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"<{_tagName}");
-
-                if (_cssClasses.Count > 0)
-                {
-
-                    sb.Append($" class=\"{string.Join(" ", _cssClasses)}\"");
-                }
-
-                if (_closingType == ClosingType.Single)
-                {
-                    sb.Append(" />");
-                }
-                else
-                {
-                    sb.Append(">");
-                    sb.Append(InnerHTML);
-                    sb.Append($"</{_tagName}>");
-                }
-
-                return sb.ToString();
-            }
-        }
+        public override string OuterHTML => _state.Render(this);
     }
 }
