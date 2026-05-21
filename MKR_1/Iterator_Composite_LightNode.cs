@@ -4,9 +4,9 @@ namespace StructuralPatternsLab
 {
     public class Iterator_Composite_LightNode
     {
-        private Stack<Composite_LightNode> _stack = new Stack<Composite_LightNode>();
+        private Stack<Template_Composite_LightNode> _stack = new Stack<Template_Composite_LightNode>();
 
-        public Iterator_Composite_LightNode(Composite_LightNode node)
+        public Iterator_Composite_LightNode(Template_Composite_LightNode node)
         {
             _stack.Push(node);
         }
@@ -16,7 +16,7 @@ namespace StructuralPatternsLab
             return _stack.Count > 0;
         }
 
-        public Composite_LightNode? Next()
+        public Template_Composite_LightNode? Next()
         {
             if (!HasNext())
             {
@@ -25,7 +25,7 @@ namespace StructuralPatternsLab
 
             var current = _stack.Pop();
 
-            if (current is Composite_LightElementNode element)
+            if (current is Template_Composite_LightElementNode element)
             {
                 var children = element.GetChildren();
                 for (int i = children.Count - 1; i >= 0; i--)
