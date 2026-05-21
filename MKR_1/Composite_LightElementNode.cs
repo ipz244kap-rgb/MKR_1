@@ -21,6 +21,11 @@ namespace StructuralPatternsLab
             _children = new List<Composite_LightNode>();
         }
 
+        public List<Composite_LightNode> GetChildren()
+        {
+            return _children;
+        }
+
         public int ChildrenCount => _children.Count;
 
         public void Add(Composite_LightNode node)

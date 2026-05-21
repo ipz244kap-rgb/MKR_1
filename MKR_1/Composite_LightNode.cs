@@ -4,5 +4,10 @@ namespace StructuralPatternsLab
     {
         public abstract string OuterHTML { get; }
         public abstract string InnerHTML { get; }
+
+        public Iterator_Composite_LightNode GetIterator()
+        {
+            return new Iterator_Composite_LightNode(this);
+        }
     }
 }

@@ -36,6 +36,21 @@ namespace StructuralPatternsLab
 
             Console.WriteLine($"\nКількість дочірніх елементів у <ul>: {ul.ChildrenCount}");
             Console.WriteLine($"Кількість дочірніх елементів у другому <li>: {li2.ChildrenCount}");
+
+            Console.WriteLine("\nОбхід дерева за допомогою ітератора:");
+            var iterator = ul.GetIterator();
+            while (iterator.HasNext())
+            {
+                var node = iterator.Next();
+                if (node is Composite_LightElementNode el)
+                {
+                    Console.WriteLine($"Елемент: <{el.OuterHTML.Substring(1, el.OuterHTML.IndexOfAny(new char[] { ' ', '>', '/' }) - 1)}>");
+                }
+                else if (node is Composite_LightTextNode text)
+                {
+                    Console.WriteLine($"Текст: {text.InnerHTML}");
+                }
+            }
         }
     }
 }
