@@ -49,6 +49,11 @@ namespace StructuralPatternsLab
 
         public override string OuterHTML => _state.Render(this);
 
+        public override void Accept(Visitor_IVisitor visitor)
+        {
+            visitor.VisitElement(this);
+        }
+
         protected override string GetOpeningTag()
         {
             StringBuilder sb = new StringBuilder();
