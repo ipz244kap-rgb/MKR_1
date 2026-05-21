@@ -2,6 +2,6 @@ namespace StructuralPatternsLab
 {
     public interface State_INodeState
     {
-        string Render(Composite_LightElementNode node);
+        string Render(Template_Composite_LightElementNode node);
     }
 }

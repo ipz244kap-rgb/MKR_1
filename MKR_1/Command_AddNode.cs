@@ -2,10 +2,10 @@ namespace StructuralPatternsLab
 {
     public class Command_AddNode : Command_ICommand
     {
-        private Composite_LightElementNode _parent;
-        private Composite_LightNode _child;
+        private Template_Composite_LightElementNode _parent;
+        private Template_Composite_LightNode _child;
 
-        public Command_AddNode(Composite_LightElementNode parent, Composite_LightNode child)
+        public Command_AddNode(Template_Composite_LightElementNode parent, Template_Composite_LightNode child)
         {
             _parent = parent;
             _child = child;

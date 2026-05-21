@@ -10,18 +10,18 @@ namespace StructuralPatternsLab
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            Composite_LightElementNode ul = new Composite_LightElementNode("ul", DisplayType.Block, ClosingType.Paired,
+            Template_Composite_LightElementNode ul = new Template_Composite_LightElementNode("ul", DisplayType.Block, ClosingType.Paired,
                 new List<string> { "list-group" });
 
-            Composite_LightElementNode li1 = new Composite_LightElementNode("li", DisplayType.Block, ClosingType.Paired,
+            Template_Composite_LightElementNode li1 = new Template_Composite_LightElementNode("li", DisplayType.Block, ClosingType.Paired,
                 new List<string> { "list-group-item" });
-            li1.Add(new Composite_LightTextNode("Перший елемент списку"));
+            li1.Add(new Template_Composite_LightTextNode("Перший елемент списку"));
 
-            Composite_LightElementNode li2 = new Composite_LightElementNode("li", DisplayType.Block, ClosingType.Paired,
+            Template_Composite_LightElementNode li2 = new Template_Composite_LightElementNode("li", DisplayType.Block, ClosingType.Paired,
                 new List<string> { "list-group-item" });
-            li2.Add(new Composite_LightTextNode("Другий елемент списку"));
+            li2.Add(new Template_Composite_LightTextNode("Другий елемент списку"));
 
-            Composite_LightElementNode img = new Composite_LightElementNode("img", DisplayType.Inline,
+            Template_Composite_LightElementNode img = new Template_Composite_LightElementNode("img", DisplayType.Inline,
                 ClosingType.Single, new List<string> { "list-icon" });
             li2.Add(img);
 
@@ -42,11 +42,11 @@ namespace StructuralPatternsLab
             while (iterator.HasNext())
             {
                 var node = iterator.Next();
-                if (node is Composite_LightElementNode el)
+                if (node is Template_Composite_LightElementNode el)
                 {
-                    Console.WriteLine($"Елемент: <{el.OuterHTML.Substring(1, el.OuterHTML.IndexOfAny(new char[] { ' ', '>', '/' }) - 1)}>");
+                    Console.WriteLine($"Елемент: <{el.TagName}>");
                 }
-                else if (node is Composite_LightTextNode text)
+                else if (node is Template_Composite_LightTextNode text)
                 {
                     Console.WriteLine($"Текст: {text.InnerHTML}");
                 }
@@ -55,9 +55,9 @@ namespace StructuralPatternsLab
             Console.WriteLine("\n--- Тестування Command ---");
             Command_Invoker invoker = new Command_Invoker();
             
-            Composite_LightElementNode li3 = new Composite_LightElementNode("li", DisplayType.Block, ClosingType.Paired,
+            Template_Composite_LightElementNode li3 = new Template_Composite_LightElementNode("li", DisplayType.Block, ClosingType.Paired,
                 new List<string> { "list-group-item" });
-            li3.Add(new Composite_LightTextNode("Третій елемент (доданий через Command)"));
+            li3.Add(new Template_Composite_LightTextNode("Третій елемент (доданий через Command)"));
 
             Command_AddNode addCommand = new Command_AddNode(ul, li3);
             
