@@ -12,3 +12,4 @@ C:\Users\alina\RiderProjects\MKR_1\MKR_1\obj\Debug\net10.0\refint\MKR_1.dll
 C:\Users\alina\RiderProjects\MKR_1\MKR_1\obj\Debug\net10.0\MKR_1.pdb
 C:\Users\alina\RiderProjects\MKR_1\MKR_1\obj\Debug\net10.0\MKR_1.genruntimeconfig.cache
 C:\Users\alina\RiderProjects\MKR_1\MKR_1\obj\Debug\net10.0\ref\MKR_1.dll
+C:\Users\alina\RiderProjects\MKR_1\MKR_1\obj\Debug\net10.0\MKR_1.sourcelink.json
